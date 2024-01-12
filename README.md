@@ -21,3 +21,7 @@ pnpm dev:3
 ```sh
 pnpm build
 ```
+
+## Thanks
+
+- [ChuHoMan/vue-demi-component-template](https://github.com/ChuHoMan/vue-demi-component-template)
