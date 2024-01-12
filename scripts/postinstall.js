@@ -6,17 +6,17 @@ const packageJsonPath = path.join(__dirname, '../package.json');
 const packageName = 'vue-demi-sample';
 
 async function switchVersion() {
-	const vue = null;
+	let vue;
 	try {
 		vue = require('vue');
 	} catch (e) {
-		console.log(`[${packageName}] not current Vue version, please use Vue2/3`);
+		console.log(`[${packageName}] Vue is not installed. Please use Vue 2 or Vue 3.`);
 		return;
 	}
 	const { version } = vue;
 
 	if (typeof version !== 'string' || !(version.startsWith('2.') || version.startsWith('3.'))) {
-		console.log(`[${ packageName }] not current Vue version, please use Vue2/3`);
+		console.log(`[${packageName}] Unsupported Vue version, please use Vue 2 or Vue 3.`);
 		return;
 	}
 
@@ -39,17 +39,22 @@ async function switchVersion() {
 		},
 	};
 
-	const newPackageJson = Object.assign(packageJson, exportJson);
+	const newPackageJson = {
+		...packageJson,
+		...exportJson,
+	};
 
-	fse.writeJsonSync(packageJsonPath, newPackageJson, { spaces: '\t' });
+	fse.writeJsonSync(packageJsonPath, newPackageJson, { spaces: 2 });
 
-	console.log(`[${packageName}] Switch packageJson fields for Vue${version}`);
+	console.log(`[${packageName}] Package.json fields updated for Vue ${version}`);
 }
 
 async function main() {
-	await switchVersion();
+	try {
+		await switchVersion();
+	} catch (e) {
+		console.error(`[${packageName}] Error:`, e);
+	}
 }
 
-main().catch((e) => {
-	console.log(e);
-});
+main();

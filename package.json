@@ -1,6 +1,6 @@
 {
   "name": "@akccakcctw/vue-demi-sample",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "利用 vue-demi 製作 vue 2/3 通用的 SFC Component",
   "license": "MIT",
   "repository": "akccakcctw/vue-demi-sample",
