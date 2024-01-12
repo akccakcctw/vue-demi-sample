@@ -10,7 +10,7 @@ async function switchVersion() {
 	try {
 		vue = require('vue');
 	} catch (e) {
-		console.log(`[${ packageName }] not current Vue version, please use Vue2/3`);
+		console.log(`[${packageName}] not current Vue version, please use Vue2/3`);
 		return;
 	}
 	const { version } = vue;
@@ -26,15 +26,15 @@ async function switchVersion() {
 	const distDir = `dist/${isVue2 ? isVue27 ? 'v2.7' : 'v2' : 'v3'}`;
 
 	const exportJson = {
-		main: `${distDir}/index.umd.js`,
-		module: `${distDir}/index.es.js`,
-		types: `${distDir}/index.d.ts`,
+		main: `${distDir}/${packageName}.umd.js`,
+		module: `${distDir}/${packageName}.es.js`,
+		types: `${distDir}/${packageName}.d.ts`,
 		style: `${distDir}/style.css`,
 		exports: {
 			'.': {
-				types: `./${distDir}/index.d.ts`,
-				import: `./${distDir}/index.es.js`,
-				require: `./${distDir}/index.cjs.js`,
+				types: `./${distDir}/${packageName}.d.ts`,
+				import: `./${distDir}/${packageName}.es.js`,
+				require: `./${distDir}/${packageName}.cjs.js`,
 			},
 		},
 	};
@@ -43,7 +43,7 @@ async function switchVersion() {
 
 	fse.writeJsonSync(packageJsonPath, newPackageJson, { spaces: '\t' });
 
-	console.log(`[${ packageName }] Switch packageJson fields for Vue${version}`);
+	console.log(`[${packageName}] Switch packageJson fields for Vue${version}`);
 }
 
 async function main() {

@@ -5,6 +5,8 @@ import { libInjectCss } from 'vite-plugin-lib-inject-css'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 import { isVue2 } from 'vue-demi'
 
+const packageName = 'vue-demi-sample';
+
 export const getSharedPlugins = (vueVersion) => {
 	return [
 		libInjectCss(),
@@ -27,7 +29,7 @@ export const baseBuildConfig = defineConfig({
 			entry: path.resolve(__dirname, 'src/components/index.js'),
 			formats: ['es', 'cjs', 'umd'],
 			name: 'VueDemiSample',
-			fileName: format => `vue-demi-sample.${format}.js`,
+			fileName: format => `${packageName}.${format}.js`,
 		},
 		rollupOptions: {
 			external: ['vue', '@vue/composition-api/dist/vue-composition-api.mjs'],
