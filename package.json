@@ -1,6 +1,6 @@
 {
   "name": "@akccakcctw/vue-demi-sample",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "利用 vue-demi 製作 vue 2/3 通用的 SFC Component",
   "license": "MIT",
   "repository": "akccakcctw/vue-demi-sample",
@@ -10,7 +10,8 @@
     "url": "https://rex-tsou.com"
   },
   "files": [
-    "dist"
+    "dist",
+    "scripts/postinstall.js"
   ],
   "exports": {
     ".": {
